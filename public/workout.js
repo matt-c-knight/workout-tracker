@@ -1,5 +1,8 @@
+
+
 async function initWorkout() {
     const lastWorkout = await API.getLastWorkout();
+    console.log(API)
     console.log("Last workout:", lastWorkout);
     if (lastWorkout) {
       document
