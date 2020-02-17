@@ -1,5 +1,7 @@
 let mongoose = require("mongoose");
-let db = require("../models");
+let Workout = require("../models/workoutmodel");
+console.log("DATABASE")
+
 
 mongoose.connect("mongodb://localhost/workout", {
   useNewUrlParser: true,
@@ -8,12 +10,13 @@ mongoose.connect("mongodb://localhost/workout", {
 
 let workoutSeed = [
   {
+    
     day: new Date().setDate(new Date().getDate()-10),
     exercises: [
       {
         type: "resistance",
         name: "Bicep Curl",
-        duration: 20,
+        totalDuration: 20,
         weight: 100,
         reps: 10,
         sets: 4
@@ -26,7 +29,7 @@ let workoutSeed = [
       {
         type: "resistance",
         name: "Lateral Pull",
-        duration: 20,
+        totalDuration: 20,
         weight: 300,
         reps: 10,
         sets: 4
@@ -39,7 +42,7 @@ let workoutSeed = [
       {
         type: "resistance",
         name: "Push Press",
-        duration: 25,
+        totalDuration: 25,
         weight: 185,
         reps: 8,
         sets: 4
@@ -52,7 +55,7 @@ let workoutSeed = [
       {
         type: "cardio",
         name: "Running",
-        duration: 25,
+        totalDuration: 25,
         distance: 4
       }
     ]
@@ -63,7 +66,7 @@ let workoutSeed = [
       {
         type: "resistance",
         name: "Bench Press",
-        duration: 20,
+        totalDuration: 20,
         weight: 285,
         reps: 10,
         sets: 4
@@ -76,7 +79,7 @@ let workoutSeed = [
       {
         type: "resistance",
         name: "Bench Press",
-        duration: 20,
+        totalDuration: 20,
         weight: 300,
         reps: 10,
         sets: 4
@@ -89,7 +92,7 @@ let workoutSeed = [
       {
         type: "resistance",
         name: "Quad Press",
-        duration: 30,
+        totalDuration: 30,
         weight: 300,
         reps: 10,
         sets: 4
@@ -102,7 +105,7 @@ let workoutSeed = [
       {
         type: "resistance",
         name: "Bench Press",
-        duration: 20,
+        totalDuration: 20,
         weight: 300,
         reps: 10,
         sets: 4
@@ -115,7 +118,7 @@ let workoutSeed = [
       {
         type: "resistance",
         name: "Military Press",
-        duration: 20,
+        totalDuration: 20,
         weight: 300,
         reps: 10,
         sets: 4
@@ -128,15 +131,17 @@ let workoutSeed = [
       {
         type: "resistance",
         name: "Bench",
-        duration: 30,
-        distance: 2
+        totalDuration: 30,
+        distance: 2,
+        reps: 10,
+        sets: 5
       }
     ]
   }
 ];
 
-db.Workout.deleteMany({})
-  .then(() => db.Workout.collection.insertMany(workoutSeed))
+Workout.deleteMany({})
+  .then(() => Workout.collection.insertMany(workoutSeed))
   .then(data => {
     console.log(data.result.n + " records inserted!");
     process.exit(0);
