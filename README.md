@@ -1,5 +1,6 @@
 # workouttracker
 
-<img src="pic1">
-<img src="pic2">
-<img src="pic3">
+<img src="/images/pic1.png">
+<img src="/images/pic2.png">
+<img src="/images/pic3.png">
+<img src="/images/pic4.png">
